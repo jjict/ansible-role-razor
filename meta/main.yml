@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: razor
   author: Alvaro Segura Del Barco
   description: Ansible role to install puppetlabs ansible
   company: Jaquerespeis Costa Rica Community
