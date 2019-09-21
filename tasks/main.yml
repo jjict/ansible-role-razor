@@ -15,7 +15,7 @@
 
 - name: Apply razor configuration file
   template:
-    src: templates/config.yaml.j2
+    src: templates/{{ razor_conf_template }}
     dest: /etc/puppetlabs/razor-server/config.yaml
 
 - name: Download microkernel

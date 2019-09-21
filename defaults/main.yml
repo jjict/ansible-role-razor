@@ -1,2 +1,3 @@
 ---
 # defaults file for razor
+razor_conf_template: "config.yaml.j2"

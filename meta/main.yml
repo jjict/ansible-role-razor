@@ -46,7 +46,7 @@ galaxy_info:
   #   - 99.99
 
   platforms:
-  - name: Centos
+  - name: EL
     versions:
     - 7
 
