@@ -1,2 +1,40 @@
 ---
 # tasks file for razor
+- name: Add puppetlabs repository
+  yum:
+        name: http://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
+        state: present
+
+- name: Install packages
+  yum:
+    name:
+      - razor-server
+      - rubygems
+      - ipmitool
+    state: present
+
+- name: Apply razor configuration file
+  template:
+    src: templates/config.yaml.j2
+    dest: /etc/puppetlabs/razor-server/config.yaml
+
+- name: Download microkernel
+  unarchive:
+    src: http://pup.pt/razor-microkernel-latest
+    dest: /opt/puppetlabs/server/data/razor-server/repo
+    remote_src: True
+
+# - name: Enable razor-server
+#   service:
+#     name: razor-server
+#     enabled: yes
+# 
+# - name: initialize database
+#   become: yes
+#   become_user: razor
+#   command: /opt/puppetlabs/bin/razor-admin -e production migrate-database
+# 
+# - name: Restart razor service
+#   service:
+#     name: razor-server
+#     state: restarted
