@@ -18,17 +18,23 @@
     src: templates/{{ razor_conf_template }}
     dest: /etc/puppetlabs/razor-server/config.yaml
 
+- name: check if microkernel exists
+  stat:
+    path: /opt/puppetlabs/server/data/razor-server/repo/microkernel
+  register: microkernel_files
+
 - name: Download microkernel
   unarchive:
     src: http://pup.pt/razor-microkernel-latest
     dest: /opt/puppetlabs/server/data/razor-server/repo
     remote_src: True
+  when: not microkernel_files.stat.exists
 
-# - name: Enable razor-server
-#   service:
-#     name: razor-server
-#     enabled: yes
-# 
+- name: Enable razor-server
+  service:
+    name: razor-server
+    enabled: yes
+
 # - name: initialize database
 #   become: yes
 #   become_user: razor
