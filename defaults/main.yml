@@ -2,3 +2,5 @@
 # defaults file for razor
 razor_conf_template: "config.yaml.j2"
 protect_new_nodes: false
+# should ansible initialize a new Razopor DB?
+initdb: false

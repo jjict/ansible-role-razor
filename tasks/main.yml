@@ -35,12 +35,15 @@
     name: razor-server
     enabled: yes
 
-# - name: initialize database
-#   become: yes
-#   become_user: razor
-#   command: /opt/puppetlabs/bin/razor-admin -e production migrate-database
-# 
-# - name: Restart razor service
-#   service:
-#     name: razor-server
-#     state: restarted
+- name: initialize database
+  become: yes
+  become_user: razor
+  command: /opt/puppetlabs/bin/razor-admin -e production migrate-database
+  changed_when: true
+  when: initdb
+
+- name: Restart razor service
+  service:
+    name: razor-server
+    state: restarted
+  when: initdb
