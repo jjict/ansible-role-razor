@@ -55,7 +55,7 @@ all:
   secure_api: false
 
   # Should newly discovered nodes be marked installed?
-  protect_new_nodes: false
+  protect_new_nodes: {{ protect_new_nodes }}
 
   # Should hook input be recorded in the event log for debugging?
   store_hook_input: false
