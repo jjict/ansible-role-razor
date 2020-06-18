@@ -2,15 +2,15 @@
 # tasks file for razor
 - name: Add puppetlabs repository
   yum:
-        name: http://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
-        state: present
+    name: http://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
+    state: present
 
 - name: Install packages
   yum:
     name:
-      - razor-server
-      - rubygems
-      - ipmitool
+    - razor-server
+    - rubygems
+    - ipmitool
     state: present
 
 - name: Apply razor configuration file
